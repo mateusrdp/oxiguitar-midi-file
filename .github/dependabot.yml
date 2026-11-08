@@ -1,0 +1,16 @@
+# Weekly version updates for the Rust crates and the workflows' actions, as
+# pull requests into develop. scripts/check-dco.sh skips Dependabot's commits.
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    target-branch: develop
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: develop
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5

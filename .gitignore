@@ -1,0 +1,14 @@
+/target
+**/*.rs.bk
+
+# The private test corpus is never committed.
+*.tar.gz
+
+# Editors and systems
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+/dist/

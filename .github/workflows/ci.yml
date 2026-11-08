@@ -1,0 +1,174 @@
+# Formatting, lint, tests, licence check and sign-off check. The final job,
+# ci-success, passes only if every other job passed; branch rules require it
+# before anything merges into develop or main.
+#
+# Made by OxiGuitar's scripts/new-repo.sh with oxiguitar's action pins and
+# Rust. The Rust jobs wait for a Cargo.toml: until the repository has one
+# they are skipped, which ci-success counts as passing.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+  # Must match rust-version in Cargo.toml: the Rust we build with, from
+  # rustup, raised only on purpose.
+  MSRV: "1.99"
+  # Debian/Ubuntu packages the build needs on Linux, space-separated
+  # (e.g. libasound2-dev). Empty: none.
+  APT_PACKAGES: ""
+
+jobs:
+  rust:
+    name: Is there Rust yet
+    runs-on: ubuntu-24.04
+    outputs:
+      present: ${{ steps.look.outputs.present }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: look
+        run: |
+          if [ -f Cargo.toml ]; then echo "present=true"; else echo "present=false"; fi >> "$GITHUB_OUTPUT"
+
+  fmt:
+    name: Formatting
+    needs: rust
+    if: needs.rust.outputs.present == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - run: cargo fmt --all --check
+
+  lint:
+    name: Lint and docs
+    needs: rust
+    if: needs.rust.outputs.present == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      # Lints run on the minimum supported Rust, so CI and contributors'
+      # machines agree and a new upstream lint cannot turn CI red overnight.
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.MSRV }}
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - if: env.APT_PACKAGES != ''
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends $APT_PACKAGES
+        timeout-minutes: 15
+      - name: Clippy
+        run: |
+          set -o pipefail
+          cargo clippy --workspace --all-targets --all-features --locked \
+            --message-format=short -- -D warnings 2>&1 \
+            | sed -E 's/^([^ :]+):([0-9]+):([0-9]+): (error|warning)(\[[^]]*\])?: (.*)$/::error file=\1,line=\2,col=\3::\6\n&/'
+      - name: Docs
+        run: |
+          set -o pipefail
+          cargo doc --workspace --no-deps --locked 2>&1 \
+            | sed -E 's/^(error|warning)(\[[^]]*\])?: (.*)$/::error::\3\n&/'
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+  test:
+    name: Test (${{ matrix.name }})
+    needs: rust
+    if: needs.rust.outputs.present == 'true'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: Linux x86_64, os: ubuntu-24.04, toolchain: stable }
+          - { name: Linux x86_64 MSRV, os: ubuntu-24.04, toolchain: msrv }
+          - { name: Linux ARM64, os: ubuntu-24.04-arm, toolchain: stable }
+          - { name: Windows x86_64, os: windows-2025, toolchain: stable }
+          - { name: Windows ARM64, os: windows-11-arm, toolchain: stable }
+          - { name: macOS, os: macos-15, toolchain: stable }
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain == 'msrv' && env.MSRV || matrix.toolchain }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.toolchain }}
+      - if: runner.os == 'Linux' && env.APT_PACKAGES != ''
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends $APT_PACKAGES
+        timeout-minutes: 15
+      # Failing tests also become an annotation, so they can be read without
+      # downloading the job log. Bash on every runner, Windows included.
+      - name: cargo test
+        shell: bash
+        env:
+          CARGO_TERM_COLOR: never
+        run: |
+          set +e
+          cargo test --workspace --locked 2>&1 | tee test.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            report=$( (grep -E -A6 'panicked at|^error: test failed|signal: ' test.log; sed -n '/^failures:$/,/^test result:/p' test.log) | head -n 80)
+            [ -n "$report" ] || report=$(tail -n 40 test.log)
+            report=${report//'%'/'%25'}
+            report=${report//$'\r'/'%0D'}
+            report=${report//$'\n'/'%0A'}
+            echo "::error title=cargo test (${{ matrix.name }})::$report"
+          fi
+          exit "$status"
+
+  deny:
+    name: Licences and advisories
+    needs: rust
+    if: needs.rust.outputs.present == 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          command: check
+          arguments: --all-features
+
+  dco:
+    name: Sign-off (DCO)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - run: >-
+          scripts/check-dco.sh
+          "${{ github.event.pull_request.base.sha }}"
+          "${{ github.event.pull_request.head.sha }}"
+
+  ci-success:
+    name: ci-success
+    if: always()
+    needs: [rust, fmt, lint, test, deny, dco]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Every job passed
+        env:
+          RESULTS: ${{ toJSON(needs.*.result) }}
+        run: |
+          echo "$RESULTS"
+          # 'skipped' is fine: the DCO job runs on pull requests only, and
+          # the Rust jobs wait for a Cargo.toml.
+          if echo "$RESULTS" | grep -Eq '"(failure|cancelled)"'; then
+            exit 1
+          fi
