@@ -12,3 +12,6 @@
 Thumbs.db
 
 /dist/
+
+# The corpus unpacked for local checks (tests/corpus.rs); never committed.
+/corpus/
