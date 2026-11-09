@@ -1,0 +1,34 @@
+{
+  "interface": "1.7",
+  "id": "oxiguitar.midi-file",
+  "name": "MIDI files",
+  "version": "0.1.0",
+  "description": "Reads and writes Standard MIDI Files (.mid, .midi, .kar) and reads RIFF MIDI files (.rmi).",
+  "authors": ["Mateus Rocha de Paula", "The OxiGuitar contributors"],
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/mateusrdp/oxiguitar-midi-file",
+  "formats": [
+    {
+      "id": "mid",
+      "name": "MIDI file",
+      "extensions": ["mid", "midi", "kar"],
+      "media_types": ["audio/midi", "audio/x-midi"],
+      "read": true,
+      "write": true,
+      "signatures": [
+        { "hex": "4d546864" }
+      ]
+    },
+    {
+      "id": "rmi",
+      "name": "RIFF MIDI file",
+      "extensions": ["rmi"],
+      "media_types": ["audio/mid"],
+      "read": true,
+      "write": false,
+      "signatures": [
+        { "at": 8, "text": "RMID" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+# oxiguitar-midi-file: the MIDI file format plugin for OxiGuitar (#223). One
+# plugin file, midi-file.oxp, reading and writing Standard MIDI Files (.mid,
+# .midi, .kar, and RIFF MIDI, .rmi). Not to be confused with
+# oxiguitar-midi, the plugin that plays sound sets.
+[package]
+name = "oxiguitar-midi-file-plugin"
+description = "The OxiGuitar format plugin for MIDI files: reads and writes Standard MIDI Files (.mid, .midi, .kar, .rmi)."
+# 0.0.0 until the first release: the Release button makes it 0.1.0.
+version = "0.1.0"
+edition = "2024"
+# Rust from rustup, raised only when something needs it (CONTRIBUTING.md).
+rust-version = "1.99"
+license = "GPL-3.0-or-later"
+authors = ["Mateus Rocha de Paula", "The OxiGuitar contributors"]
+repository = "https://github.com/mateusrdp/oxiguitar-midi-file"
+homepage = "https://github.com/mateusrdp/oxiguitar-midi-file"
+publish = false
+
+[lib]
+# An ordinary library for tests, and midi-file.oxp when built with
+# `--features oxp --crate-type cdylib` (build-oxp.sh, oxiguitar-plugin-test).
+crate-type = ["lib"]
+
+[features]
+oxp = []
+
+[dependencies]
+# OxiGuitar's SDK, score model and player, by git: interface 1.7 (OxiGuitar
+# 0.18.0). Nothing of OxiGuitar's is on crates.io. The reader reads into the
+# core's model and converts it for the plugin interface; the writer writes
+# what OxiGuitar's player plays (Mateus, 9 Nov 2026), from its timeline.
+oxiguitar-plugin = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
+oxiguitar-model = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0", features = ["wire"] }
+oxiguitar-play = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
+# Standard MIDI Files, parsed and written (Mateus, 9 Nov 2026). Exactly as
+# published; no default features (std only, no parallel parsing).
+midly = { version = "0.5.3", default-features = false, features = ["std"] }
+
+[dev-dependencies]
+# The contract suite (tests/contract.rs): builds the .oxp file and checks it
+# through OxiGuitar's own plugin host.
+oxiguitar-plugin-test = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
+serde_json = "1"
+
+# Plugins deny `unsafe` rather than forbid it: `export_plugin!` allows it on
+# the two attributes it generates, and nowhere else.
+[lints.rust]
+unsafe_code = "deny"
+missing_docs = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+unreachable_pub = "warn"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+dbg_macro = "warn"
+todo = "warn"
+
+[profile.release]
+# Small files. Keep the default `panic = "unwind"`: a panic is then caught
+# and the plugin withdrawn instead of closing OxiGuitar.
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[workspace]
+# The fuzz targets (nightly Rust, see fuzz/README.md) have a workspace and
+# lock file of their own.
+exclude = ["fuzz"]

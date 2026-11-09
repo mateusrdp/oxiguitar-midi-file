@@ -1,0 +1,39 @@
+# Test builds and releases (#165, #223). The work is oxiguitar-packages'
+# reusable workflow plugin-release.yml: it runs build-oxp.sh on Linux
+# (x86_64, ARM64), Windows (x86_64, ARM64) and macOS and makes, from the
+# plugin file, a zip per target, a .deb and an .rpm (oxiguitar-midi-file), a
+# per-user Windows installer, a macOS .pkg and SHA256SUMS.
+#
+# - On a pull request, and on a push to develop or main: nothing is
+#   released. The files stay under the run for 14 days, with a ~dev version;
+#   those are the test builds.
+# - On a pushed v* tag (only the maintainer makes them, with the Release
+#   button in oxiguitar-packages): a DRAFT release holding all of it.
+#   Publishing the draft starts publish.yml.
+name: Release
+
+on:
+  pull_request:
+  push:
+    branches: [develop, main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  release:
+    uses: mateusrdp/oxiguitar-packages/.github/workflows/plugin-release.yml@main
+    with:
+      name: midi-file
+      title: "MIDI files"
+      description: "Opens and saves Standard MIDI Files (.mid, .midi, .kar, .rmi)."
+      # ci.yml has run the tests on six systems.
+      test: false
+    permissions:
+      contents: write
