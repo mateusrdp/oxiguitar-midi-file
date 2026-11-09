@@ -8,6 +8,8 @@ the release notes.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-09
+
 ### Added
 
 - **The MIDI file plugin** (`midi-file.oxp`, `oxiguitar.midi-file`, #223 in
