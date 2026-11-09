@@ -37,7 +37,7 @@ jobs:
     outputs:
       present: ${{ steps.look.outputs.present }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - id: look
         run: |
           if [ -f Cargo.toml ]; then echo "present=true"; else echo "present=false"; fi >> "$GITHUB_OUTPUT"
@@ -48,7 +48,7 @@ jobs:
     if: needs.rust.outputs.present == 'true'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt
@@ -60,7 +60,7 @@ jobs:
     if: needs.rust.outputs.present == 'true'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       # Lints run on the minimum supported Rust, so CI and contributors'
       # machines agree and a new upstream lint cannot turn CI red overnight.
       - uses: dtolnay/rust-toolchain@master
@@ -101,7 +101,7 @@ jobs:
           - { name: Windows ARM64, os: windows-11-arm, toolchain: stable }
           - { name: macOS, os: macos-15, toolchain: stable }
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.toolchain == 'msrv' && env.MSRV || matrix.toolchain }}
@@ -137,7 +137,7 @@ jobs:
     if: needs.rust.outputs.present == 'true'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: EmbarkStudios/cargo-deny-action@v2
         with:
           command: check
@@ -148,7 +148,7 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - run: >-

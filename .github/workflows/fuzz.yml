@@ -1,0 +1,67 @@
+# Fuzzes the reader and the writer (fuzz/README.md): four minutes each on a
+# pull request that touches them, as long as asked when started by hand.
+name: Fuzz
+
+on:
+  pull_request:
+    paths:
+      - src/**
+      - fuzz/**
+      - fixtures/**
+      - Cargo.lock
+      - .github/workflows/fuzz.yml
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: Minutes of fuzzing per target (at most 340)
+        required: true
+        default: "60"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fuzz-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  MINUTES: ${{ inputs.minutes }}
+
+jobs:
+  fuzz:
+    name: Fuzz ${{ matrix.target }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [read, write]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Seconds
+        run: |
+          if [ "${{ github.event_name }}" = pull_request ]; then
+            seconds=240
+          else
+            case "$MINUTES" in ''|*[!0-9]*) echo "::error::minutes must be a number"; exit 1 ;; esac
+            if [ "$MINUTES" -gt 340 ]; then echo "::error::At most 340 minutes."; exit 1; fi
+            seconds=$(( MINUTES * 60 ))
+          fi
+          echo "FUZZ_SECONDS=$seconds" >> "$GITHUB_ENV"
+      - uses: dtolnay/rust-toolchain@nightly
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: fuzz
+      - run: cargo install cargo-fuzz --locked
+      - run: fuzz/seeds.sh
+      - name: Fuzz
+        working-directory: fuzz
+        run: cargo fuzz run ${{ matrix.target }} corpus/${{ matrix.target }} -- -max_total_time=$FUZZ_SECONDS -rss_limit_mb=2048 -timeout=10
+      - name: Keep what crashed
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: fuzz-${{ matrix.target }}
+          path: fuzz/artifacts
+          retention-days: 14

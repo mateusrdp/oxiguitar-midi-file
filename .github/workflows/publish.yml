@@ -1,0 +1,27 @@
+# Tells the package repositories when the maintainer publishes a release
+# (#165). The work is oxiguitar-packages' reusable workflow
+# plugin-publish.yml: it checks the release holds every file and sum, then
+# sends the event. It needs the secret PACKAGES_TOKEN; without it nothing is
+# sent and the run says so.
+name: Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The release's tag, such as v0.1.0
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    uses: mateusrdp/oxiguitar-packages/.github/workflows/plugin-publish.yml@main
+    with:
+      name: midi-file
+      tag: ${{ inputs.tag }}
+      # Not submitted to winget (no third parties for now).
+    secrets: inherit

@@ -1,0 +1,37 @@
+# Fuzz targets for the MIDI file reader and writer (cargo-fuzz, nightly
+# Rust). Not part of the main workspace: run from this folder, see
+# README.md. CI runs them in .github/workflows/fuzz.yml.
+[package]
+name = "oxiguitar-midi-file-fuzz"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+oxiguitar-midi-file-plugin = { path = ".." }
+
+# Its own workspace, so the main one never builds libFuzzer.
+[workspace]
+members = ["."]
+
+[profile.release]
+debug = 1
+
+[[bin]]
+name = "read"
+path = "fuzz_targets/read.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "write"
+path = "fuzz_targets/write.rs"
+test = false
+doc = false
+bench = false
