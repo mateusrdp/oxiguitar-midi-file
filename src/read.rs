@@ -115,6 +115,11 @@ struct Conductor {
 
 /// Reads a MIDI file (plain, or wrapped in RIFF as `.rmi`).
 pub(crate) fn read(data: &[u8]) -> Result<Imported, String> {
+    if division(data).is_some_and(|d| d & 0xff00 == 0x8000) {
+        // midly 0.5.3 negates this frame rate (-128) as an i8, which
+        // overflows where overflow is checked; it is no frame rate anyway.
+        return Err("not a MIDI file that can be read: invalid SMPTE frame rate".to_owned());
+    }
     let smf = Smf::parse(data).map_err(|e| format!("not a MIDI file that can be read: {e}"))?;
     let mut log = Log::default();
     // Ticks a quarter note. A file timed in frames a second (SMPTE) is
@@ -317,6 +322,53 @@ pub(crate) fn read(data: &[u8]) -> Result<Imported, String> {
         cell_kinds: CellKinds::new(),
     }
     .build())
+}
+
+/// The header's division word (timing), found as midly finds it: in the
+/// file, or in a RIFF file's `data` chunk, in the first `MThd` chunk
+/// before any track. `None` when there is none to read.
+fn division(data: &[u8]) -> Option<u16> {
+    let mut smf = data;
+    if data.starts_with(b"RIFF") {
+        // RIFF chunks: id, length (little-endian), data, a pad byte after
+        // odd lengths. The first is RIFF, holding the form type and then
+        // the chunks, among them `data`.
+        let riff = chunks(data, true).next()?.1;
+        let inner = riff.get(4..)?;
+        smf = chunks(inner, true).find(|c| &c.0 == b"data")?.1;
+    }
+    for (id, chunk) in chunks(smf, false) {
+        match &id {
+            b"MThd" => return chunk.get(4..6).map(|d| u16::from_be_bytes([d[0], d[1]])),
+            b"MTrk" => return None,
+            _ => {}
+        }
+    }
+    None
+}
+
+/// The chunks of `raw`: (id, data). RIFF chunks have little-endian
+/// lengths and a pad byte after odd ones; MIDI chunks big-endian lengths
+/// and no pad. A chunk running past the end holds what is left.
+fn chunks(mut raw: &[u8], riff: bool) -> impl Iterator<Item = ([u8; 4], &[u8])> {
+    std::iter::from_fn(move || {
+        let id: [u8; 4] = raw.get(..4)?.try_into().ok()?;
+        let len: [u8; 4] = raw.get(4..8)?.try_into().ok()?;
+        let len = if riff {
+            u32::from_le_bytes(len)
+        } else {
+            u32::from_be_bytes(len)
+        };
+        let len = usize::try_from(len).unwrap_or(usize::MAX);
+        let rest = &raw[8..];
+        let (chunk, after) = rest.split_at(len.min(rest.len()));
+        raw = if riff && len % 2 == 1 {
+            after.get(1..).unwrap_or(&[])
+        } else {
+            after
+        };
+        Some((id, chunk))
+    })
 }
 
 /// One part for the channels of a track of the file that play the same
@@ -1167,6 +1219,19 @@ fn lyric_line(staff: &Staff, bars: &[BarSpan], lyrics: &[(f64, String)]) -> Opti
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_frame_rate_midly_cant_negate_is_refused() {
+        let mut file = b"MThd\0\0\0\x06\0\0\0\x01\x80\x28".to_vec();
+        assert_eq!(division(&file), Some(0x8028));
+        assert!(read(&file).is_err());
+        file[12] = 0xe7; // 25 frames a second
+        assert!(read(&file).is_ok());
+        let mut riff = b"RIFF\x22\0\0\0RMIDdata\x0e\0\0\0".to_vec();
+        riff.extend_from_slice(&file);
+        riff[12 + 8 + 12] = 0x80;
+        assert_eq!(division(&riff), Some(0x8028));
+    }
 
     #[test]
     fn grid_distances() {

@@ -349,7 +349,14 @@ fn a_karaoke_file_reads_its_title_and_words() {
     assert_eq!(score.tracks.len(), 1);
     let flute = &score.tracks[0];
     assert_eq!(flute.name, "Melody");
-    assert!(!flute.staves[0].show_tablature, "a flute shows notation only");
-    assert_eq!(flute.staves[0].tuning.len(), 6, "with a guitar's strings to finger");
+    assert!(
+        !flute.staves[0].show_tablature,
+        "a flute shows notation only"
+    );
+    assert_eq!(
+        flute.staves[0].tuning.len(),
+        6,
+        "with a guitar's strings to finger"
+    );
     assert_eq!(flute.lyrics[0].text, "Hel-lo world");
 }
