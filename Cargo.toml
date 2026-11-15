@@ -29,7 +29,7 @@ oxp = []
 # 0.18.0). Nothing of OxiGuitar's is on crates.io. The reader reads into the
 # core's model and converts it for the plugin interface; the writer writes
 # what OxiGuitar's player plays (Mateus, 9 Nov 2026), from its timeline.
-oxiguitar-plugin = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
+oxiguitar-plugin = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.19.1" }
 oxiguitar-model = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0", features = ["wire"] }
 oxiguitar-play = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
 # Standard MIDI Files, parsed and written (Mateus, 9 Nov 2026). Exactly as
