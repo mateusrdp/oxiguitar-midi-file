@@ -89,12 +89,12 @@ dependencies = [
 
 [[package]]
 name = "oxiguitar-host"
-version = "0.18.0"
-source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
+version = "0.19.1"
+source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1#e76c4336836d9895b73381624b1e031e70c8f63d"
 dependencies = [
  "libloading",
  "object",
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1)",
  "serde_json",
 ]
 
@@ -115,7 +115,7 @@ name = "oxiguitar-model"
 version = "0.18.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
 dependencies = [
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0)",
 ]
 
 [[package]]
@@ -124,7 +124,7 @@ version = "0.18.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
 dependencies = [
  "oxiguitar-model",
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0)",
  "rtrb",
 ]
 
@@ -133,7 +133,7 @@ name = "oxiguitar-plugin"
 version = "1.7.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
 dependencies = [
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0)",
  "serde_json",
 ]
 
@@ -149,9 +149,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "oxiguitar-plugin-api"
+version = "1.7.0"
+source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1#e76c4336836d9895b73381624b1e031e70c8f63d"
+dependencies = [
+ "miniz_oxide",
+ "postcard",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "oxiguitar-plugin-test"
 version = "1.7.0"
-source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
+source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1#e76c4336836d9895b73381624b1e031e70c8f63d"
 dependencies = [
  "libc",
  "oxiguitar-host",
