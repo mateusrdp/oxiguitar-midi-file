@@ -94,7 +94,7 @@ source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b
 dependencies = [
  "libloading",
  "object",
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0)",
  "serde_json",
 ]
 
@@ -103,7 +103,7 @@ name = "oxiguitar-midi-file-plugin"
 version = "0.1.0"
 dependencies = [
  "midly",
- "oxiguitar-model",
+ "oxiguitar-model 0.19.1",
  "oxiguitar-play",
  "oxiguitar-plugin",
  "oxiguitar-plugin-test",
@@ -114,8 +114,13 @@ dependencies = [
 name = "oxiguitar-model"
 version = "0.18.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
+
+[[package]]
+name = "oxiguitar-model"
+version = "0.19.1"
+source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1#e76c4336836d9895b73381624b1e031e70c8f63d"
 dependencies = [
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1)",
 ]
 
 [[package]]
@@ -123,8 +128,8 @@ name = "oxiguitar-play"
 version = "0.18.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
 dependencies = [
- "oxiguitar-model",
- "oxiguitar-plugin-api",
+ "oxiguitar-model 0.18.0",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0)",
  "rtrb",
 ]
 
@@ -133,7 +138,7 @@ name = "oxiguitar-plugin"
 version = "1.7.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
 dependencies = [
- "oxiguitar-plugin-api",
+ "oxiguitar-plugin-api 1.7.0 (git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0)",
  "serde_json",
 ]
 
@@ -141,6 +146,17 @@ dependencies = [
 name = "oxiguitar-plugin-api"
 version = "1.7.0"
 source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.18.0#014eb535774339b4720cafc64bdf846d804904fa"
+dependencies = [
+ "miniz_oxide",
+ "postcard",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "oxiguitar-plugin-api"
+version = "1.7.0"
+source = "git+https://github.com/mateusrdp/oxiguitar?tag=v0.19.1#e76c4336836d9895b73381624b1e031e70c8f63d"
 dependencies = [
  "miniz_oxide",
  "postcard",
