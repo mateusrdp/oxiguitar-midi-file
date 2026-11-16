@@ -8,6 +8,13 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # OxiGuitar's crates (SDK, host, model, test kit) come from a git tag
+      # of OxiGuitar's repository, moved by hand with each OxiGuitar
+      # release. Dependabot reads the tag against the crates' own versions,
+      # proposes other tags and fails to resolve them, so it leaves them all
+      # alone.
+      - dependency-name: "oxiguitar-*"
   - package-ecosystem: github-actions
     directory: /
     target-branch: develop
