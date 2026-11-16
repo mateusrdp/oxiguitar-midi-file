@@ -8,6 +8,8 @@ the release notes.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-16
+
 ### Added
 
 - **A Flatpak extension**, `io.github.mateusrdp.OxiGuitar.Plugin.midi-file`, in
