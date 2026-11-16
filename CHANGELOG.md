@@ -8,6 +8,13 @@ the release notes.
 
 ## [Unreleased]
 
+### Added
+
+- **A Flatpak extension**, `io.github.mateusrdp.OxiGuitar.Plugin.midi-file`, in
+  the release and in OxiGuitar's Flatpak repository, for OxiGuitar
+  installed as a Flatpak. 0.1.0 was released without it: its release was
+  built before the packaging gained Flatpak extensions.
+
 ## [0.1.0] - 2026-11-09
 
 ### Added
