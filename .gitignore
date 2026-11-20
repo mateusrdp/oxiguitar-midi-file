@@ -15,3 +15,6 @@ Thumbs.db
 
 # The corpus unpacked for local checks (tests/corpus.rs); never committed.
 /corpus/
+
+# The built manual
+/docs/manual/book/

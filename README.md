@@ -2,7 +2,7 @@
 
 The MIDI file plugin for [OxiGuitar](https://github.com/mateusrdp/oxiguitar), a free, open-source guitar tablature and score viewer, editor and player for Windows, macOS and Linux. With it OxiGuitar opens Standard MIDI Files, from a sequencer, a notation program, a MIDI guitar or a karaoke collection, and saves songs as MIDI files any program can play.
 
-It is not the plugin that makes OxiGuitar's sound: that one is [oxiguitar-midi](https://github.com/mateusrdp/oxiguitar-midi), which plays SoundFonts, DLS and SFZ sound sets. This one only reads and writes files.
+It is not the plugin that makes OxiGuitar's sound: that one is oxiguitar-midi, which plays SoundFonts, DLS and SFZ sound sets. This one only reads and writes files.
 
 | Plugin file | Id | Reads | Writes |
 | --- | --- | --- | --- |
@@ -20,11 +20,15 @@ The file type is decided from the file's contents, never from its extension: Oxi
 
 [docs/design.md](docs/design.md) says what is read and written and what is left out, and why.
 
+## Manual
+
+The manual is at <https://mateusrdp.github.io/oxiguitar-midi-file/>. Its source is in [docs/manual](docs/manual). It covers what the plugin is for, how it works, what it needs and how to install it.
+
 ## Install
 
-Every [release](https://github.com/mateusrdp/oxiguitar-midi-file/releases) holds a zip per system (Linux x86_64 and ARM64, Windows x86_64 and ARM64, macOS), a `.deb` and an `.rpm` for Linux, a per-user installer for Windows (no administrator needed), a `.pkg` for macOS, and a `SHA256SUMS` file. The OxiGuitar manual's [install page](https://mateusrdp.github.io/oxiguitar/installing.html) says which one to use and how to keep plugins updated through your package manager.
+Every [release](https://github.com/mateusrdp/oxiguitar-midi-file/releases) holds a zip per system (Linux x86_64 and ARM64, Windows x86_64 and ARM64, macOS), a `.deb` and an `.rpm` for Linux, a per-user installer for Windows (no administrator needed), a `.pkg` for macOS, and a `SHA256SUMS` file. The [manual's install page](https://mateusrdp.github.io/oxiguitar-midi-file/install.html) says which one to use and how to keep it updated.
 
-You can also copy `midi-file.oxp` from a zip into OxiGuitar's plugin folder by hand ([Settings and plugins](https://mateusrdp.github.io/oxiguitar/plugins.html)).
+You can also copy `midi-file.oxp` from a zip into OxiGuitar's plugin folder by hand ([Installing](https://mateusrdp.github.io/oxiguitar-midi-file/install.html)).
 
 Found a file it reads wrongly? Please [open an issue](https://github.com/mateusrdp/oxiguitar-midi-file/issues/new) with the file if you can share it, and the program that wrote it.
 
@@ -48,7 +52,7 @@ What is where:
 
 ## Releases
 
-The maintainer releases with the Release button in [oxiguitar-packages](https://github.com/mateusrdp/oxiguitar-packages): it bumps the version, merges `develop` into `main` and tags it. [`release.yml`](.github/workflows/release.yml) then builds the plugin for every system with the packages' reusable plugin-release workflow, makes the packages and a draft release; publishing the draft starts [`publish.yml`](.github/workflows/publish.yml), which tells the package repositories. Every pull request gets the same builds as test builds, kept for 14 days under its Release run.
+The maintainer releases with the Release button in oxiguitar-packages: it bumps the version, merges `develop` into `main` and tags it. [`release.yml`](.github/workflows/release.yml) then builds the plugin for every system with the packages' reusable plugin-release workflow, makes the packages and a draft release; publishing the draft starts [`publish.yml`](.github/workflows/publish.yml), which tells the package repositories. Every pull request gets the same builds as test builds, kept for 14 days under its Release run.
 
 ## Licence
 

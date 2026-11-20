@@ -13,9 +13,10 @@ decisions; this file only repeats the standing rules.
 - Never commit the corpus (tabs.tar.gz, scores.tar.gz) or publish renders of it.
 - No telemetry, no uploads, no downloads by the app.
 - No emojis anywhere, including PR attribution lines.
+- No signatures or credit anywhere on GitHub: **never** write "Generated with Claude", "Generated with Claude Code" or any variant in a comment, an issue, a PR body or a review. The author line already says it. Commits carry only `Signed-off-by: Claude <noreply@anthropic.com>`.
 - Keep README.md up to date with screenshots and example sounds.
 - I merge PRs and create v* tags. Whenever I need to do something on git, give me step-by-step instructions with the exact commands.
-- Stack PRs to save CI runs; I merge stacks with my merge-stack.sh.
+- Stack PRs to save CI runs.
 - Open PRs with the REST API (gh pr create fails in your sessions).
 - Send test-build links, with their expiry dates, for each PR.
 - Locally you only have rustc 1.97: lower rust-version to 1.97 for nested plugin builds, always restore 1.99, and delete target/lib after build-plugins.sh.
