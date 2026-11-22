@@ -1,0 +1,10 @@
+{
+  "repository": "mateusrdp/oxiguitar-midi-file",
+  "plugins": [
+    {"name": "midi-file", "package": "oxiguitar-midi-file-plugin", "library": "oxiguitar_midi_file_plugin"}
+  ],
+  "corpus": {
+    "uses": true,
+    "through_core": {"extensions": ["mid", "midi", "kar", "rmi"], "write_as": ["mid"], "readers": ["guitarpro"]}
+  }
+}
