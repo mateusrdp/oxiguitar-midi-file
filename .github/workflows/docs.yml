@@ -68,7 +68,7 @@ jobs:
             done < <(grep -o 'href="[^"#:]*\.html' "$page" | sed 's/^href="//')
           done < <(find . -name '*.html' -print0)
           exit $missing
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request'
         with:
           path: docs/manual/book
