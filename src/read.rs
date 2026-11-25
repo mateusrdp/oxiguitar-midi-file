@@ -552,6 +552,8 @@ impl Builder {
             });
         }
         let score = Score {
+            plugins: Default::default(),
+            track_bar_colors: Default::default(),
             info,
             initial_tempo,
             tempo_label: String::new(),
@@ -1041,6 +1043,7 @@ fn rest_bar(span: &BarSpan, kind: Kind) -> Bar {
     let mut voice = Voice::default();
     push_rest(&mut voice, span.end - span.start);
     Bar {
+        plugins: Default::default(),
         clef: kind.clef(None),
         voices: vec![voice],
         simile: None,
@@ -1132,6 +1135,7 @@ fn slices(
                     notes: ordered
                         .iter()
                         .map(|n| Note {
+                            plugins: Default::default(),
                             place: NotePlace::Pitched(Pitch(n.key)),
                             tie: i > 0 || n.start < a,
                             dynamic: dynamic(n.velocity),
@@ -1147,6 +1151,7 @@ fn slices(
             push_rest(&mut voice, rest);
         }
         out.push(Bar {
+            plugins: Default::default(),
             clef,
             voices: vec![voice],
             simile: None,

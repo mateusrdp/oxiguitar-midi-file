@@ -2,6 +2,8 @@
 
 The MIDI file plugin for [OxiGuitar](https://github.com/mateusrdp/oxiguitar), a free, open-source guitar tablature and score viewer, editor and player for Windows, macOS and Linux. With it OxiGuitar opens Standard MIDI Files, from a sequencer, a notation program, a MIDI guitar or a karaoke collection, and saves songs as MIDI files any program can play.
 
+In plain words: a MIDI file is a recording of when notes were played, not a score. Opening one means transcribing it: the plugin *quantises* the timing onto a grid of beats, writes note values, and OxiGuitar works out strings and frets. Saving writes exactly what OxiGuitar plays. The [manual](https://mateusrdp.github.io/oxiguitar-midi-file/) explains how.
+
 It is not the plugin that makes OxiGuitar's sound: that one is oxiguitar-midi, which plays SoundFonts, DLS and SFZ sound sets. This one only reads and writes files.
 
 | Plugin file | Id | Reads | Writes |
@@ -39,6 +41,7 @@ Rust 1.99 or later from [rustup](https://rustup.rs). The plugin SDK, the score m
 ```sh
 cargo test                  # the reader, the writer, and the plugin as an .oxp file
 ./build-oxp.sh              # dist/midi-file-VERSION-SYSTEM-ARCH.oxp
+python3 scripts/test-all.py --corpus DIR   # every test on your own files, as the manual's Testing page says
 ```
 
 `cargo test` reads files made in the tests event by event as a player would record them, writes what it read and reads it back, then builds the plugin as the `.oxp` file we ship and checks it through OxiGuitar's own plugin host (the contract suite of `oxiguitar-plugin-test`). With MIDI files of a private collection in `corpus/files/` (never committed), `cargo test --test corpus` round-trips each of them. [CONTRIBUTING.md](CONTRIBUTING.md) has the rest of the rules.
@@ -53,6 +56,10 @@ What is where:
 ## Releases
 
 The maintainer releases with the Release button in oxiguitar-packages: it bumps the version, merges `develop` into `main` and tags it. [`release.yml`](.github/workflows/release.yml) then builds the plugin for every system with the packages' reusable plugin-release workflow, makes the packages and a draft release; publishing the draft starts [`publish.yml`](.github/workflows/publish.yml), which tells the package repositories. Every pull request gets the same builds as test builds, kept for 14 days under its Release run.
+
+## Credits
+
+The bytes are read and written by [midly](https://github.com/negamartin/midly) (Unlicense); the quantiser and everything between the bytes and the score are our own code. Built on OxiGuitar's plugin SDK. Standard MIDI Files and General MIDI are the MIDI Association's. The manual's [Credits](https://mateusrdp.github.io/oxiguitar-midi-file/credits.html) page lists every project with its authors and licence. Thank you to all of them.
 
 ## Licence
 

@@ -69,8 +69,8 @@ jobs:
           components: clippy
       - uses: Swatinem/rust-cache@v2
       - if: env.APT_PACKAGES != ''
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends $APT_PACKAGES
-        timeout-minutes: 15
+        run: scripts/apt-install.sh $APT_PACKAGES
+        timeout-minutes: 60
       - name: Clippy
         run: |
           set -o pipefail
@@ -109,8 +109,8 @@ jobs:
         with:
           key: ${{ matrix.toolchain }}
       - if: runner.os == 'Linux' && env.APT_PACKAGES != ''
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends $APT_PACKAGES
-        timeout-minutes: 15
+        run: scripts/apt-install.sh $APT_PACKAGES
+        timeout-minutes: 60
       # Failing tests also become an annotation, so they can be read without
       # downloading the job log. Bash on every runner, Windows included.
       - name: cargo test
@@ -130,6 +130,20 @@ jobs:
             echo "::error title=cargo test (${{ matrix.name }})::$report"
           fi
           exit "$status"
+      # Every feature on the manual's Features page names tests, and every
+      # test it names exists on this system (docs/manual/src/testing.md; the
+      # full run, on a corpus and the newest core, is scripts/test-all.py).
+      - name: Features page
+        shell: bash
+        env:
+          CARGO_TERM_COLOR: never
+        run: |
+          py=$(command -v python3 || command -v python)
+          "$py" scripts/test-all.py --features-only --out target/test-all/ci || {
+            cat target/test-all/ci/summary.md
+            echo "::error title=Features page (${{ matrix.name }})::$(grep -E '^- ' target/test-all/ci/summary.md | head -n 20 | sed -z 's/%/%25/g; s/\n/%0A/g')"
+            exit 1
+          }
 
   deny:
     name: Licences and advisories

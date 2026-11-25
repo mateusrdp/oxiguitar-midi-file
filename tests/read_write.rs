@@ -360,3 +360,28 @@ fn a_karaoke_file_reads_its_title_and_words() {
     );
     assert_eq!(flute.lyrics[0].text, "Hel-lo world");
 }
+
+/// A MIDI guitar records a channel for each string, all on one program,
+/// in one track of the file: it opens as one track holding every string's
+/// notes. Drums in the same track of the file stay a track of their own.
+#[test]
+fn a_guitar_with_a_channel_for_each_string_opens_as_one_track() {
+    let q = 480;
+    let mut guitar = vec![(0, E::Name("MIDI guitar"))];
+    for channel in 0..6u8 {
+        guitar.push((0, E::Program(channel, 25)));
+    }
+    // An E minor chord, one note on each string's channel.
+    for (channel, key) in [64u8, 59, 55, 52, 47, 40].into_iter().enumerate() {
+        guitar.extend(note(0, 4 * q, channel as u8, key, 90));
+    }
+    guitar.extend(note(0, 30, 9, 36, 110));
+    let score = read(&smf(q as u16, vec![guitar]));
+    assert_eq!(score.tracks.len(), 2, "the guitar and the drums");
+    let keys: std::collections::BTreeSet<u8> = struck(&score, 0).into_iter().map(|n| n.2).collect();
+    assert_eq!(keys, [40, 47, 52, 55, 59, 64].into_iter().collect());
+    assert!(
+        score.tracks[1].staves[0].tuning.is_empty(),
+        "drums have no strings"
+    );
+}

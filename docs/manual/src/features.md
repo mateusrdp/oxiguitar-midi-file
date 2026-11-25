@@ -1,0 +1,18 @@
+# Features and their tests
+
+Everything the MIDI file plugin does, and the tests that check it. The test names are the ones `cargo test` prints; a `stage:` is a step of `scripts/test-all.py`. The script fails when a feature here names no test, or names a test that doesn't exist, so a new feature gets its row and its tests in the same pull request (the [Testing](testing.md) page says how to run them, on your own files too).
+
+| Feature | What it does | Tests |
+| --- | --- | --- |
+| Recognises MIDI files by their contents | Standard MIDI files (`MThd`) and RIFF MIDI files (`RMID`, read like the file inside); nothing else. | `contract::its_signatures_recognise_midi_files_only`, `corpus::midi_files_are_recognised_by_their_contents`, `read_write::a_riff_file_reads_like_the_file_inside`, `read_write::other_files_are_refused` |
+| Notes on a grid | A note a little early or late lands on its beat: each beat-sized cell takes the grid (plain or triplet) that fits its notes best; lengths as plain, dotted and tuplet values. | `read_write::a_played_file_reads_on_the_grid`, `read::tests::grid_distances`, `time::tests::fills_lengths` |
+| Bars, tempo, keys and markers | Bars follow the time signatures, a short bar getting one of its own length; tempo changes, key signatures and markers on their bars; a SMPTE file at 120 bpm, a frame rate midly can't read refused. | `read_write::a_played_file_reads_on_the_grid`, `read::tests::signatures_of_short_bars`, `read::tests::a_frame_rate_midly_cant_negate_is_refused`, `read_write::an_empty_file_reads_as_one_empty_bar` |
+| Tracks and instruments | Each channel a track; guitars and basses open as tablature (a seven-string guitar or five-string bass when the notes go low), channel 10 as drums; velocities become dynamics. | `instruments::tests::kinds`, `read::tests::velocities_as_dynamics`, `read_write::a_played_file_reads_on_the_grid` |
+| A MIDI guitar's channels | A guitar recorded with a channel for each string opens as one track; drums stay apart. | `read_write::a_guitar_with_a_channel_for_each_string_opens_as_one_track` |
+| Lyrics and karaoke | Lyrics on the beats they're sung on; a karaoke file's title, artist and words; texts in UTF-8 or Latin-1. | `read_write::a_karaoke_file_reads_its_title_and_words`, `text::tests::utf8_or_latin1` |
+| Writes MIDI files | Format 1 at 960 ticks a quarter: the tempo map, a track a track, what was read written and read back the same. | `read_write::what_is_read_is_written_and_reads_back_the_same`, `write::tests::signatures_of_played_lengths` |
+| Played as OxiGuitar plays it | Repeats played out; bends, slides, vibrato and the whammy bar as pitch bend curves. | `read_write::repeats_are_written_out`, `write::tests::curves` |
+| Names what it can't write | The notation as written, and the strings and frets, each kind of loss once, counted. | `log::tests::one_entry_per_kind_counted`, `read_write::what_is_read_is_written_and_reads_back_the_same` |
+| Your MIDI files | Every MIDI file of the corpus reads, and from the second trip writes and reads back the same. | `corpus::every_corpus_midi_file_round_trips` |
+| Through the newest OxiGuitar | Every corpus file OxiGuitar opens (MIDI by this plugin, Guitar Pro by the released Guitar Pro plugins) is written as `.mid` and read back by this plugin, a second round trip changing nothing. | `stage:corpus through the core` |
+| A working plugin file | The `.oxp` file keeps the plugin contract, with this repository's SDK version and with the newest release of OxiGuitar. | `contract::the_plugin_file_keeps_the_contract`, `oxiguitar_plugin_checks::the_manifest_matches_the_plugin`, `stage:contract (latest core)` |

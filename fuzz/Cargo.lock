@@ -125,7 +125,7 @@ dependencies = [
 
 [[package]]
 name = "oxiguitar-midi-file-fuzz"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "libfuzzer-sys",
  "oxiguitar-midi-file-plugin",
@@ -133,7 +133,7 @@ dependencies = [
 
 [[package]]
 name = "oxiguitar-midi-file-plugin"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "midly",
  "oxiguitar-model",
