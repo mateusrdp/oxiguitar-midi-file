@@ -36,7 +36,7 @@ Found a file it reads wrongly? Please [open an issue](https://github.com/mateusr
 
 ## Build and test
 
-Rust 1.99 or later from [rustup](https://rustup.rs). The plugin SDK, the score model and the player come from OxiGuitar's repository by git (plugin interface 1.7); nothing of OxiGuitar's is on crates.io. The files themselves are parsed and written with the [midly](https://crates.io/crates/midly) crate.
+Rust 1.99 or later from [rustup](https://rustup.rs). The plugin SDK, the score model and the player come from OxiGuitar's repository by git tag (`v0.23.0`); nothing of OxiGuitar's is on crates.io. The files themselves are parsed and written with the [midly](https://crates.io/crates/midly) crate.
 
 ```sh
 cargo test                  # the reader, the writer, and the plugin as an .oxp file
