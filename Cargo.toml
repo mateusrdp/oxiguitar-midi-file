@@ -29,9 +29,11 @@ oxp = []
 # 0.18.0). Nothing of OxiGuitar's is on crates.io. The reader reads into the
 # core's model and converts it for the plugin interface; the writer writes
 # what OxiGuitar's player plays (Mateus, 9 Nov 2026), from its timeline.
-oxiguitar-plugin = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
-oxiguitar-model = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0", features = ["wire"] }
-oxiguitar-play = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
+# Now at v0.23.0 (plugin interface 1.16; plugin files are tar archives,
+# mateusrdp/oxiguitar#347).
+oxiguitar-plugin = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.23.0" }
+oxiguitar-model = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.23.0", features = ["wire"] }
+oxiguitar-play = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.23.0" }
 # Standard MIDI Files, parsed and written (Mateus, 9 Nov 2026). Exactly as
 # published; no default features (std only, no parallel parsing).
 midly = { version = "0.5.3", default-features = false, features = ["std"] }
@@ -39,7 +41,7 @@ midly = { version = "0.5.3", default-features = false, features = ["std"] }
 [dev-dependencies]
 # The contract suite (tests/contract.rs): builds the .oxp file and checks it
 # through OxiGuitar's own plugin host.
-oxiguitar-plugin-test = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.18.0" }
+oxiguitar-plugin-test = { git = "https://github.com/mateusrdp/oxiguitar", tag = "v0.23.0" }
 serde_json = "1"
 
 # Plugins deny `unsafe` rather than forbid it: `export_plugin!` allows it on
