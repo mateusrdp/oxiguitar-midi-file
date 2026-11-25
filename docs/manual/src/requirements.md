@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- OxiGuitar 0.18 or later (plugin interface 1.7). See [the OxiGuitar manual](https://mateusrdp.github.io/oxiguitar/).
+- OxiGuitar 0.23 or later, which reads plugin files as archives (the plugin asks for interface 1.7). See [the OxiGuitar manual](https://mateusrdp.github.io/oxiguitar/).
 - Windows, macOS or Linux.
 - To hear a song you also need a plugin that plays scores and an audio output plugin.
 
