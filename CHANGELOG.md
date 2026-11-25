@@ -10,7 +10,7 @@ the release notes.
 
 ### Changed
 
-- **The plugin file is a tar archive** (mateusrdp/oxiguitar#347): `build-oxp.sh` packs `manifest.json` first and the library second (`plugin.so`, `plugin.dll` or `plugin.dylib`), as OxiGuitar 0.23 and later read plugin files, which older OxiGuitars can't load. The SDK is at mateusrdp/oxiguitar#348's commit until a release tags it; the reader gives the score model's newer fields (plugins' data, bar colours) their defaults. `scripts/test-all.py` 1.1.0, as in every repository.
+- **The plugin file is a tar archive** (mateusrdp/oxiguitar#347): `build-oxp.sh` packs `manifest.json` first and the library second (`plugin.so`, `plugin.dll` or `plugin.dylib`), as OxiGuitar 0.23 and later read plugin files, which older OxiGuitars can't load. The SDK is at OxiGuitar v0.23.0 (interface 1.16); the reader gives the score model's newer fields (plugins' data, bar colours) their defaults. `scripts/test-all.py` 1.1.0, as in every repository.
 
 ### Added
 
