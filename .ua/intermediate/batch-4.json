@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "file:.github/dependabot.yml",
+      "type": "config",
+      "name": "dependabot.yml",
+      "summary": "Automated dependency updates",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/dependabot.yml"
+    },
+    {
+      "id": "file:.github/pull_request_template.md",
+      "type": "docs",
+      "name": "PR template",
+      "summary": "PR checklist",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/pull_request_template.md"
+    },
+    {
+      "id": "file:docs/manual/book.toml",
+      "type": "config",
+      "name": "book.toml",
+      "summary": "mdBook config",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/book.toml"
+    },
+    {
+      "id": "file:scripts/apt-install.sh",
+      "type": "script",
+      "name": "apt-install.sh",
+      "summary": "System dependency installer",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "scripts/apt-install.sh"
+    },
+    {
+      "id": "file:scripts/check-dco.sh",
+      "type": "script",
+      "name": "check-dco.sh",
+      "summary": "DCO sign-off checker",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "scripts/check-dco.sh"
+    },
+    {
+      "id": "file:scripts/test-all.py",
+      "type": "script",
+      "name": "test-all.py",
+      "summary": "Test runner",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "scripts/test-all.py"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:docs/manual/book.toml",
+      "target": "file:docs/manual/src/SUMMARY.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

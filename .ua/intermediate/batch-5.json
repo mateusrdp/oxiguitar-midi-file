@@ -1,0 +1,237 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/lib.rs",
+      "type": "file",
+      "name": "lib.rs",
+      "summary": "midi-file lib.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "src/lib.rs"
+    },
+    {
+      "id": "file:src/instruments.rs",
+      "type": "file",
+      "name": "instruments.rs",
+      "summary": "midi-file instruments.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "src/instruments.rs"
+    },
+    {
+      "id": "file:src/log.rs",
+      "type": "file",
+      "name": "log.rs",
+      "summary": "midi-file log.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "src/log.rs"
+    },
+    {
+      "id": "file:src/read.rs",
+      "type": "file",
+      "name": "read.rs",
+      "summary": "midi-file read.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "complex",
+      "filePath": "src/read.rs"
+    },
+    {
+      "id": "file:src/text.rs",
+      "type": "file",
+      "name": "text.rs",
+      "summary": "midi-file text.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "src/text.rs"
+    },
+    {
+      "id": "file:src/time.rs",
+      "type": "file",
+      "name": "time.rs",
+      "summary": "midi-file time.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "src/time.rs"
+    },
+    {
+      "id": "file:src/write.rs",
+      "type": "file",
+      "name": "write.rs",
+      "summary": "midi-file write.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "complex",
+      "filePath": "src/write.rs"
+    },
+    {
+      "id": "file:tests/contract.rs",
+      "type": "file",
+      "name": "contract.rs",
+      "summary": "midi-file contract.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "tests/contract.rs"
+    },
+    {
+      "id": "file:tests/corpus.rs",
+      "type": "file",
+      "name": "corpus.rs",
+      "summary": "midi-file corpus.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "tests/corpus.rs"
+    },
+    {
+      "id": "file:tests/read_write.rs",
+      "type": "file",
+      "name": "read_write.rs",
+      "summary": "midi-file read_write.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "tests/read_write.rs"
+    },
+    {
+      "id": "file:tests/support/corpus.rs",
+      "type": "file",
+      "name": "corpus.rs",
+      "summary": "midi-file corpus.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "tests/support/corpus.rs"
+    },
+    {
+      "id": "file:fuzz/fuzz_targets/read.rs",
+      "type": "file",
+      "name": "read.rs",
+      "summary": "midi-file read.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "fuzz/fuzz_targets/read.rs"
+    },
+    {
+      "id": "file:fuzz/fuzz_targets/write.rs",
+      "type": "file",
+      "name": "write.rs",
+      "summary": "midi-file write.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "fuzz/fuzz_targets/write.rs"
+    },
+    {
+      "id": "file:fixtures/oxiguitar-test.mid",
+      "type": "asset",
+      "name": "oxiguitar-test.mid",
+      "summary": "midi-file oxiguitar-test.mid",
+      "tags": [],
+      "complexity": "simple",
+      "filePath": "fixtures/oxiguitar-test.mid"
+    },
+    {
+      "id": "file:docs/design.md",
+      "type": "document",
+      "name": "design.md",
+      "summary": "midi-file design.md",
+      "tags": [],
+      "complexity": "simple",
+      "filePath": "docs/design.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/instruments.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/log.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/read.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/text.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/time.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/write.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/contract.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/corpus.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/read_write.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/support/corpus.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

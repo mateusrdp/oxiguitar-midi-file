@@ -1,0 +1,324 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "96004ab6fcd37d92218cbf50bf68c8bde8524f4c6592356455ccf525e8a3cfed",
+  "files": [
+    {
+      "path": ".github/dependabot.yml",
+      "language": "yaml",
+      "sizeLines": 23,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "language": "markdown",
+      "sizeLines": 15,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 188,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/docs.yml",
+      "language": "yaml",
+      "sizeLines": 89,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/fuzz.yml",
+      "language": "yaml",
+      "sizeLines": 67,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/publish.yml",
+      "language": "yaml",
+      "sizeLines": 27,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "language": "yaml",
+      "sizeLines": 39,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "language": "markdown",
+      "sizeLines": 51,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CLAUDE.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "Cargo.toml",
+      "language": "toml",
+      "sizeLines": 70,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 68,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "build-oxp.sh",
+      "language": "shell",
+      "sizeLines": 77,
+      "fileCategory": "script"
+    },
+    {
+      "path": "clippy.toml",
+      "language": "toml",
+      "sizeLines": 5,
+      "fileCategory": "config"
+    },
+    {
+      "path": "deny.toml",
+      "language": "toml",
+      "sizeLines": 66,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/design.md",
+      "language": "markdown",
+      "sizeLines": 62,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/book.toml",
+      "language": "toml",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/manual/src/README.md",
+      "language": "markdown",
+      "sizeLines": 23,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/SUMMARY.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/credits.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/features.md",
+      "language": "markdown",
+      "sizeLines": 18,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/how-it-works.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/install.md",
+      "language": "markdown",
+      "sizeLines": 60,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/requirements.md",
+      "language": "markdown",
+      "sizeLines": 12,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/testing.md",
+      "language": "markdown",
+      "sizeLines": 61,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/src/use-cases.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "fixtures/oxiguitar-test.mid",
+      "language": "mid",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "fuzz/Cargo.toml",
+      "language": "toml",
+      "sizeLines": 37,
+      "fileCategory": "config"
+    },
+    {
+      "path": "fuzz/README.md",
+      "language": "markdown",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "fuzz/fuzz_targets/read.rs",
+      "language": "rust",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "fuzz/fuzz_targets/write.rs",
+      "language": "rust",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "fuzz/seeds.sh",
+      "language": "shell",
+      "sizeLines": 11,
+      "fileCategory": "script"
+    },
+    {
+      "path": "manifest.json",
+      "language": "json",
+      "sizeLines": 34,
+      "fileCategory": "config"
+    },
+    {
+      "path": "rustfmt.toml",
+      "language": "toml",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "scripts/apt-install.sh",
+      "language": "shell",
+      "sizeLines": 140,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/check-dco.sh",
+      "language": "shell",
+      "sizeLines": 70,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/test-all.py",
+      "language": "python",
+      "sizeLines": 1393,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/instruments.rs",
+      "language": "rust",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/lib.rs",
+      "language": "rust",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/log.rs",
+      "language": "rust",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/read.rs",
+      "language": "rust",
+      "sizeLines": 1263,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/text.rs",
+      "language": "rust",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/time.rs",
+      "language": "rust",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/write.rs",
+      "language": "rust",
+      "sizeLines": 868,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/contract.rs",
+      "language": "rust",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/corpus.rs",
+      "language": "rust",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/read_write.rs",
+      "language": "rust",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/suite.json",
+      "language": "json",
+      "sizeLines": 10,
+      "fileCategory": "config"
+    },
+    {
+      "path": "tests/support/corpus.rs",
+      "language": "rust",
+      "sizeLines": 211,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 49,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "failures": [],
+  "stats": {
+    "filesScanned": 49,
+    "byCategory": {
+      "config": 9,
+      "docs": 16,
+      "infra": 5,
+      "script": 4,
+      "code": 15
+    },
+    "byLanguage": {
+      "yaml": 6,
+      "markdown": 16,
+      "toml": 6,
+      "shell": 4,
+      "mid": 1,
+      "rust": 13,
+      "json": 2,
+      "python": 1
+    }
+  }
+}
