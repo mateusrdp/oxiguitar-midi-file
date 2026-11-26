@@ -1,0 +1,64 @@
+{
+  "nodes": [
+    {
+      "id": "file:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "CI",
+      "summary": "Build and test",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/ci.yml"
+    },
+    {
+      "id": "file:.github/workflows/docs.yml",
+      "type": "pipeline",
+      "name": "Docs",
+      "summary": "Documentation build",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/docs.yml"
+    },
+    {
+      "id": "file:.github/workflows/publish.yml",
+      "type": "pipeline",
+      "name": "Publish",
+      "summary": "Publish artifacts",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/publish.yml"
+    },
+    {
+      "id": "file:.github/workflows/release.yml",
+      "type": "pipeline",
+      "name": "Release",
+      "summary": "Create releases",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/release.yml"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.github/workflows/ci.yml",
+      "target": "file:.github/workflows/docs.yml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.5
+    },
+    {
+      "source": "file:.github/workflows/publish.yml",
+      "target": "file:.github/workflows/release.yml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.5
+    }
+  ]
+}

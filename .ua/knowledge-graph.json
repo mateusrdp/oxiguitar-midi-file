@@ -1,0 +1,822 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "oxiguitar-midi-file",
+    "description": "oxiguitar-midi-file plugin for OxiGuitar",
+    "languages": [
+      "json",
+      "rust",
+      "toml"
+    ],
+    "frameworks": [],
+    "analyzedAt": "2026-11-26T22:00:00.000Z",
+    "analyzedCommit": "18b7be223d86d82ad0d24c3957e4e15f8cdd1f24"
+  },
+  "nodes": [
+    {
+      "id": "file:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "CI",
+      "summary": "Build and test",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/ci.yml"
+    },
+    {
+      "id": "file:.github/workflows/docs.yml",
+      "type": "pipeline",
+      "name": "Docs",
+      "summary": "Documentation build",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/docs.yml"
+    },
+    {
+      "id": "file:.github/workflows/publish.yml",
+      "type": "pipeline",
+      "name": "Publish",
+      "summary": "Publish artifacts",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/publish.yml"
+    },
+    {
+      "id": "file:.github/workflows/release.yml",
+      "type": "pipeline",
+      "name": "Release",
+      "summary": "Create releases",
+      "tags": [
+        "ci"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/workflows/release.yml"
+    },
+    {
+      "id": "file:README.md",
+      "type": "document",
+      "name": "README",
+      "summary": "midi-file plugin overview",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "README.md"
+    },
+    {
+      "id": "file:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG",
+      "summary": "Version history",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "CHANGELOG.md"
+    },
+    {
+      "id": "file:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING",
+      "summary": "Contributor guidelines",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "CONTRIBUTING.md"
+    },
+    {
+      "id": "file:Cargo.toml",
+      "type": "config",
+      "name": "Cargo.toml",
+      "summary": "Dependencies",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "Cargo.toml"
+    },
+    {
+      "id": "file:clippy.toml",
+      "type": "config",
+      "name": "clippy.toml",
+      "summary": "Clippy config",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "clippy.toml"
+    },
+    {
+      "id": "file:deny.toml",
+      "type": "config",
+      "name": "deny.toml",
+      "summary": "Cargo deny",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "deny.toml"
+    },
+    {
+      "id": "file:rustfmt.toml",
+      "type": "config",
+      "name": "rustfmt.toml",
+      "summary": "Rustfmt config",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "rustfmt.toml"
+    },
+    {
+      "id": "file:manifest.json",
+      "type": "config",
+      "name": "manifest.json",
+      "summary": "Plugin manifest",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "manifest.json"
+    },
+    {
+      "id": "file:build-oxp.sh",
+      "type": "script",
+      "name": "build-oxp.sh",
+      "summary": "Build script",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "build-oxp.sh"
+    },
+    {
+      "id": "file:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE",
+      "summary": "Dev guidelines",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "CLAUDE.md"
+    },
+    {
+      "id": "file:docs/manual/src/SUMMARY.md",
+      "type": "document",
+      "name": "SUMMARY.md",
+      "summary": "Table of contents",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/SUMMARY.md"
+    },
+    {
+      "id": "file:docs/manual/src/README.md",
+      "type": "document",
+      "name": "README",
+      "summary": "Manual intro",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/README.md"
+    },
+    {
+      "id": "file:docs/manual/src/features.md",
+      "type": "document",
+      "name": "Features",
+      "summary": "Feature list",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/features.md"
+    },
+    {
+      "id": "file:docs/manual/src/install.md",
+      "type": "document",
+      "name": "Installation",
+      "summary": "Install guide",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/install.md"
+    },
+    {
+      "id": "file:docs/manual/src/usage.md",
+      "type": "document",
+      "name": "Usage",
+      "summary": "Usage guide",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/usage.md"
+    },
+    {
+      "id": "file:docs/manual/src/architecture.md",
+      "type": "document",
+      "name": "Architecture",
+      "summary": "Architecture overview",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "moderate",
+      "filePath": "docs/manual/src/architecture.md"
+    },
+    {
+      "id": "file:docs/manual/src/testing.md",
+      "type": "document",
+      "name": "Testing",
+      "summary": "Testing guide",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/testing.md"
+    },
+    {
+      "id": "file:docs/manual/src/credits.md",
+      "type": "document",
+      "name": "Credits",
+      "summary": "Acknowledgments",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/credits.md"
+    },
+    {
+      "id": "file:docs/manual/src/contributing.md",
+      "type": "document",
+      "name": "Contributing",
+      "summary": "Dev guidelines",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/contributing.md"
+    },
+    {
+      "id": "file:.github/dependabot.yml",
+      "type": "config",
+      "name": "dependabot.yml",
+      "summary": "Automated dependency updates",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/dependabot.yml"
+    },
+    {
+      "id": "file:.github/pull_request_template.md",
+      "type": "docs",
+      "name": "PR template",
+      "summary": "PR checklist",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": ".github/pull_request_template.md"
+    },
+    {
+      "id": "file:docs/manual/book.toml",
+      "type": "config",
+      "name": "book.toml",
+      "summary": "mdBook config",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/book.toml"
+    },
+    {
+      "id": "file:scripts/apt-install.sh",
+      "type": "script",
+      "name": "apt-install.sh",
+      "summary": "System dependency installer",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "scripts/apt-install.sh"
+    },
+    {
+      "id": "file:scripts/check-dco.sh",
+      "type": "script",
+      "name": "check-dco.sh",
+      "summary": "DCO sign-off checker",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "scripts/check-dco.sh"
+    },
+    {
+      "id": "file:scripts/test-all.py",
+      "type": "script",
+      "name": "test-all.py",
+      "summary": "Test runner",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "scripts/test-all.py"
+    },
+    {
+      "id": "file:src/lib.rs",
+      "type": "file",
+      "name": "lib.rs",
+      "summary": "midi-file lib.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "src/lib.rs"
+    },
+    {
+      "id": "file:src/instruments.rs",
+      "type": "file",
+      "name": "instruments.rs",
+      "summary": "midi-file instruments.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "src/instruments.rs"
+    },
+    {
+      "id": "file:src/log.rs",
+      "type": "file",
+      "name": "log.rs",
+      "summary": "midi-file log.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "src/log.rs"
+    },
+    {
+      "id": "file:src/read.rs",
+      "type": "file",
+      "name": "read.rs",
+      "summary": "midi-file read.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "complex",
+      "filePath": "src/read.rs"
+    },
+    {
+      "id": "file:src/text.rs",
+      "type": "file",
+      "name": "text.rs",
+      "summary": "midi-file text.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "src/text.rs"
+    },
+    {
+      "id": "file:src/time.rs",
+      "type": "file",
+      "name": "time.rs",
+      "summary": "midi-file time.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "src/time.rs"
+    },
+    {
+      "id": "file:src/write.rs",
+      "type": "file",
+      "name": "write.rs",
+      "summary": "midi-file write.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "complex",
+      "filePath": "src/write.rs"
+    },
+    {
+      "id": "file:tests/contract.rs",
+      "type": "file",
+      "name": "contract.rs",
+      "summary": "midi-file contract.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "tests/contract.rs"
+    },
+    {
+      "id": "file:tests/corpus.rs",
+      "type": "file",
+      "name": "corpus.rs",
+      "summary": "midi-file corpus.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "tests/corpus.rs"
+    },
+    {
+      "id": "file:tests/read_write.rs",
+      "type": "file",
+      "name": "read_write.rs",
+      "summary": "midi-file read_write.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "tests/read_write.rs"
+    },
+    {
+      "id": "file:tests/support/corpus.rs",
+      "type": "file",
+      "name": "corpus.rs",
+      "summary": "midi-file corpus.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "moderate",
+      "filePath": "tests/support/corpus.rs"
+    },
+    {
+      "id": "file:fuzz/fuzz_targets/read.rs",
+      "type": "file",
+      "name": "read.rs",
+      "summary": "midi-file read.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "fuzz/fuzz_targets/read.rs"
+    },
+    {
+      "id": "file:fuzz/fuzz_targets/write.rs",
+      "type": "file",
+      "name": "write.rs",
+      "summary": "midi-file write.rs",
+      "tags": [
+        "rust"
+      ],
+      "complexity": "simple",
+      "filePath": "fuzz/fuzz_targets/write.rs"
+    },
+    {
+      "id": "file:fixtures/oxiguitar-test.mid",
+      "type": "asset",
+      "name": "oxiguitar-test.mid",
+      "summary": "midi-file oxiguitar-test.mid",
+      "tags": [],
+      "complexity": "simple",
+      "filePath": "fixtures/oxiguitar-test.mid"
+    },
+    {
+      "id": "file:docs/design.md",
+      "type": "document",
+      "name": "design.md",
+      "summary": "midi-file design.md",
+      "tags": [],
+      "complexity": "simple",
+      "filePath": "docs/design.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.github/workflows/ci.yml",
+      "target": "file:.github/workflows/docs.yml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.5
+    },
+    {
+      "source": "file:.github/workflows/publish.yml",
+      "target": "file:.github/workflows/release.yml",
+      "type": "related",
+      "direction": "bidirectional",
+      "weight": 0.5
+    },
+    {
+      "source": "file:build-oxp.sh",
+      "target": "file:Cargo.toml",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:deny.toml",
+      "target": "file:Cargo.toml",
+      "type": "validates",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:manifest.json",
+      "target": "file:Cargo.toml",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/README.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/features.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/install.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/usage.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/architecture.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/testing.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/architecture.md",
+      "target": "file:docs/manual/src/features.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:docs/manual/src/usage.md",
+      "target": "file:docs/manual/src/install.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:docs/manual/src/features.md",
+      "target": "file:docs/manual/src/testing.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:docs/manual/src/README.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:docs/manual/src/testing.md",
+      "target": "file:docs/manual/src/features.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/manual/src/contributing.md",
+      "target": "file:docs/manual/src/architecture.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/manual/src/architecture.md",
+      "target": "file:docs/manual/src/usage.md",
+      "type": "described_in",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:docs/manual/book.toml",
+      "target": "file:docs/manual/src/SUMMARY.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/instruments.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/log.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/read.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/text.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/time.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:src/write.rs",
+      "type": "depends-on",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/contract.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/corpus.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/read_write.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/lib.rs",
+      "target": "file:tests/support/corpus.rs",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ],
+  "layers": [
+    {
+      "name": "CI/CD Pipelines",
+      "nodes": [
+        "file:.github/workflows/ci.yml",
+        "file:.github/workflows/docs.yml",
+        "file:.github/workflows/publish.yml",
+        "file:.github/workflows/release.yml"
+      ],
+      "description": "CI/CD Pipelines layer"
+    },
+    {
+      "name": "Documentation",
+      "nodes": [
+        "file:README.md",
+        "file:CHANGELOG.md",
+        "file:CONTRIBUTING.md",
+        "file:docs/manual/src/SUMMARY.md",
+        "file:docs/manual/src/README.md",
+        "file:docs/manual/src/features.md",
+        "file:docs/manual/src/install.md",
+        "file:docs/manual/src/usage.md",
+        "file:docs/manual/src/architecture.md",
+        "file:docs/manual/src/testing.md",
+        "file:docs/manual/src/credits.md",
+        "file:docs/manual/src/contributing.md",
+        "file:docs/manual/book.toml",
+        "file:docs/design.md"
+      ],
+      "description": "Documentation layer"
+    },
+    {
+      "name": "Configuration",
+      "nodes": [
+        "file:Cargo.toml",
+        "file:clippy.toml",
+        "file:deny.toml",
+        "file:rustfmt.toml"
+      ],
+      "description": "Configuration layer"
+    },
+    {
+      "name": "Plugin Source",
+      "nodes": [
+        "file:manifest.json",
+        "file:CLAUDE.md",
+        "file:.github/dependabot.yml",
+        "file:.github/pull_request_template.md",
+        "file:src/lib.rs",
+        "file:src/instruments.rs",
+        "file:src/log.rs",
+        "file:src/read.rs",
+        "file:src/text.rs",
+        "file:src/time.rs",
+        "file:src/write.rs"
+      ],
+      "description": "Plugin Source layer"
+    },
+    {
+      "name": "Scripts",
+      "nodes": [
+        "file:build-oxp.sh",
+        "file:scripts/apt-install.sh",
+        "file:scripts/check-dco.sh",
+        "file:scripts/test-all.py"
+      ],
+      "description": "Scripts layer"
+    },
+    {
+      "name": "Test Infrastructure",
+      "nodes": [
+        "file:tests/contract.rs",
+        "file:tests/corpus.rs",
+        "file:tests/read_write.rs",
+        "file:tests/support/corpus.rs",
+        "file:fuzz/fuzz_targets/read.rs",
+        "file:fuzz/fuzz_targets/write.rs",
+        "file:fixtures/oxiguitar-test.mid"
+      ],
+      "description": "Test Infrastructure layer"
+    }
+  ],
+  "tour": [
+    {
+      "title": "Plugin Overview",
+      "nodeId": "file:README.md",
+      "summary": "oxiguitar-midi-file plugin overview",
+      "layer": "Documentation"
+    },
+    {
+      "title": "Plugin Entry",
+      "nodeId": "file:src/lib.rs",
+      "summary": "Plugin entry point",
+      "layer": "Plugin Source"
+    },
+    {
+      "title": "read.rs",
+      "nodeId": "file:src/read.rs",
+      "summary": "src/read.rs component",
+      "layer": "Plugin Source"
+    },
+    {
+      "title": "write.rs",
+      "nodeId": "file:src/write.rs",
+      "summary": "src/write.rs component",
+      "layer": "Plugin Source"
+    },
+    {
+      "title": "Cargo.toml",
+      "nodeId": "file:Cargo.toml",
+      "summary": "Cargo.toml component",
+      "layer": "Configuration"
+    },
+    {
+      "title": "ci.yml",
+      "nodeId": "file:.github/workflows/ci.yml",
+      "summary": ".github/workflows/ci.yml component",
+      "layer": "CI/CD Pipelines"
+    }
+  ]
+}

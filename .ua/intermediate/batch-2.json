@@ -1,0 +1,137 @@
+{
+  "nodes": [
+    {
+      "id": "file:README.md",
+      "type": "document",
+      "name": "README",
+      "summary": "midi-file plugin overview",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "README.md"
+    },
+    {
+      "id": "file:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG",
+      "summary": "Version history",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "CHANGELOG.md"
+    },
+    {
+      "id": "file:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING",
+      "summary": "Contributor guidelines",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "CONTRIBUTING.md"
+    },
+    {
+      "id": "file:Cargo.toml",
+      "type": "config",
+      "name": "Cargo.toml",
+      "summary": "Dependencies",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "Cargo.toml"
+    },
+    {
+      "id": "file:clippy.toml",
+      "type": "config",
+      "name": "clippy.toml",
+      "summary": "Clippy config",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "clippy.toml"
+    },
+    {
+      "id": "file:deny.toml",
+      "type": "config",
+      "name": "deny.toml",
+      "summary": "Cargo deny",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "deny.toml"
+    },
+    {
+      "id": "file:rustfmt.toml",
+      "type": "config",
+      "name": "rustfmt.toml",
+      "summary": "Rustfmt config",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "rustfmt.toml"
+    },
+    {
+      "id": "file:manifest.json",
+      "type": "config",
+      "name": "manifest.json",
+      "summary": "Plugin manifest",
+      "tags": [
+        "config"
+      ],
+      "complexity": "simple",
+      "filePath": "manifest.json"
+    },
+    {
+      "id": "file:build-oxp.sh",
+      "type": "script",
+      "name": "build-oxp.sh",
+      "summary": "Build script",
+      "tags": [
+        "script"
+      ],
+      "complexity": "simple",
+      "filePath": "build-oxp.sh"
+    },
+    {
+      "id": "file:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE",
+      "summary": "Dev guidelines",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "CLAUDE.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:build-oxp.sh",
+      "target": "file:Cargo.toml",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:deny.toml",
+      "target": "file:Cargo.toml",
+      "type": "validates",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:manifest.json",
+      "target": "file:Cargo.toml",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

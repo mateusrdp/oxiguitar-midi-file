@@ -1,0 +1,196 @@
+{
+  "nodes": [
+    {
+      "id": "file:docs/manual/src/SUMMARY.md",
+      "type": "document",
+      "name": "SUMMARY.md",
+      "summary": "Table of contents",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/SUMMARY.md"
+    },
+    {
+      "id": "file:docs/manual/src/README.md",
+      "type": "document",
+      "name": "README",
+      "summary": "Manual intro",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/README.md"
+    },
+    {
+      "id": "file:docs/manual/src/features.md",
+      "type": "document",
+      "name": "Features",
+      "summary": "Feature list",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/features.md"
+    },
+    {
+      "id": "file:docs/manual/src/install.md",
+      "type": "document",
+      "name": "Installation",
+      "summary": "Install guide",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/install.md"
+    },
+    {
+      "id": "file:docs/manual/src/usage.md",
+      "type": "document",
+      "name": "Usage",
+      "summary": "Usage guide",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/usage.md"
+    },
+    {
+      "id": "file:docs/manual/src/architecture.md",
+      "type": "document",
+      "name": "Architecture",
+      "summary": "Architecture overview",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "moderate",
+      "filePath": "docs/manual/src/architecture.md"
+    },
+    {
+      "id": "file:docs/manual/src/testing.md",
+      "type": "document",
+      "name": "Testing",
+      "summary": "Testing guide",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/testing.md"
+    },
+    {
+      "id": "file:docs/manual/src/credits.md",
+      "type": "document",
+      "name": "Credits",
+      "summary": "Acknowledgments",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/credits.md"
+    },
+    {
+      "id": "file:docs/manual/src/contributing.md",
+      "type": "document",
+      "name": "Contributing",
+      "summary": "Dev guidelines",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple",
+      "filePath": "docs/manual/src/contributing.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/README.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/features.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/install.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/usage.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/architecture.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/SUMMARY.md",
+      "target": "file:docs/manual/src/testing.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:docs/manual/src/architecture.md",
+      "target": "file:docs/manual/src/features.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:docs/manual/src/usage.md",
+      "target": "file:docs/manual/src/install.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:docs/manual/src/features.md",
+      "target": "file:docs/manual/src/testing.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:README.md",
+      "target": "file:docs/manual/src/README.md",
+      "type": "links_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:docs/manual/src/testing.md",
+      "target": "file:docs/manual/src/features.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/manual/src/contributing.md",
+      "target": "file:docs/manual/src/architecture.md",
+      "type": "references",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/manual/src/architecture.md",
+      "target": "file:docs/manual/src/usage.md",
+      "type": "described_in",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "lastAnalyzedCommit": "18b7be223d86d82ad0d24c3957e4e15f8cdd1f24",
+  "graphCommit": "18b7be223d86d82ad0d24c3957e4e15f8cdd1f24",
+  "analyzedAt": "2026-11-26T22:00:00.000Z",
+  "graphVersion": "1.0.0",
+  "stats": {
+    "totalNodes": 44,
+    "totalEdges": 29,
+    "totalLayers": 6,
+    "totalTourStops": 6,
+    "filesScanned": 13,
+    "nodeTypes": {
+      "pipeline": 4,
+      "document": 14,
+      "config": 7,
+      "script": 4,
+      "docs": 1,
+      "file": 13,
+      "asset": 1
+    },
+    "edgeTypes": {
+      "related": 2,
+      "uses": 1,
+      "validates": 1,
+      "references": 7,
+      "links_to": 7,
+      "described_in": 1,
+      "depends-on": 6,
+      "tests": 4
+    },
+    "layersCovered": 44,
+    "unassignedFileNodes": 0
+  }
+}
